@@ -1,13 +1,13 @@
 const initialState = {
 	username: '',
 	email: '',
-	passwod: ''
+	password: ''
 };
 
 export default (state = initialState, action) => {
 	switch (action.type) {
 		case 'UPDATE_LOGIN_FORM':
-			return action.formDate;
+			return action.formData;
 		default:
 			return state;
 	}
