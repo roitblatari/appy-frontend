@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { getCurrentUser } from './actions/currentUser';
 import './App.css';
 import Login from './components/Login';
+import Logout from './components/Logout';
+import currentUser from './actions/currentUser';
 
 class App extends Component {
 	componentDidMount() {
@@ -10,11 +12,11 @@ class App extends Component {
 	}
 	render() {
 		return (
-			// <div className="App">
-			// 	<div className="App-header">
-			//<h2>I'm the App Component</h2>
-			<Login />
-			// 	</div>
+			<div className="App">
+				{this.props.currentUser ? <Logout /> : <Login />}
+				{/* <Login />
+				<Logout /> */}
+			</div>
 			// 	<p className="App-intro">
 			// 		To get started, edit <code>src/App.js</code> and save to reload.
 			// 	</p>
@@ -23,4 +25,10 @@ class App extends Component {
 	}
 }
 
-export default connect(null, { getCurrentUser })(App);
+const mapStateToProps = ({ currentUser }) => {
+	return {
+		currentUser
+	};
+};
+
+export default connect(mapStateToProps, { getCurrentUser })(App);
