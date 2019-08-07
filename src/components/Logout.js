@@ -4,18 +4,13 @@ import { connect } from 'react-redux';
 import { logout } from '../actions/currentUser';
 
 const Logout = ({ logout }) => {
-	// const handleSubmit = (event) => {
-	// 	event.preventDefault();
-	// 	logout();
-	// };
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		logout();
+	};
 
 	return (
-		<form
-			onSubmit={(event) => {
-				event.preventDefault();
-				logout();
-			}}
-		>
+		<form onSubmit={handleSubmit}>
 			<input type="submit" value="Log Out" />
 		</form>
 	);
