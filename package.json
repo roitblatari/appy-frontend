@@ -10,7 +10,9 @@
 		"redux": "^4.0.4",
 		"redux-thunk": "^2.3.0"
 	},
-	"devDependencies": {},
+	"devDependencies": {
+		"terser-brunch": "^3.0.0"
+	},
 	"scripts": {
 		"start": "PORT=3001 react-scripts start",
 		"build": "react-scripts build",
