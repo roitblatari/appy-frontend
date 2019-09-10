@@ -5,3 +5,10 @@ export const updateLoginForm = (formData) => {
 		formData
 	};
 };
+
+export const resetLoginForm = () => {
+	// console.log(formData);
+	return {
+		type: 'RESET_CURRENT_USER'
+	};
+};
