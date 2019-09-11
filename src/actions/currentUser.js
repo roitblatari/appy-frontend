@@ -1,4 +1,5 @@
 import { resetLoginForm } from './loginForm.js';
+import { getMyDeeds } from './myDeeds.js';
 
 export const setCurrentUser = (user) => {
 	return {
@@ -6,6 +7,7 @@ export const setCurrentUser = (user) => {
 		user
 	};
 };
+
 export const clearCurrentUser = () => {
 	return {
 		type: 'CLEAR_CURRENT_USER'
@@ -31,6 +33,7 @@ export const login = (credentials) => {
 					console.log(user.error);
 				} else {
 					dispatch(setCurrentUser(user));
+					dispatch(getMyDeeds());
 					dispatch(resetLoginForm());
 				}
 			});
@@ -63,28 +66,30 @@ export const getCurrentUser = () => {
 					console.log(user.error);
 				} else {
 					dispatch(setCurrentUser(user));
+					dispatch(getMyDeeds());
 				}
 			});
 	};
 };
-export const CurrentUser = () => {
-	// console.log('credentials are: ', credentials);
 
-	return (dispatch) => {
-		fetch('http://localhost:3000/api/v1/get_current_user', {
-			credentials: 'include',
-			method: 'GET',
-			headers: {
-				'content-type': 'application/json'
-			}
-		})
-			.then((r) => r.json())
-			.then((user) => {
-				if (user.error) {
-					console.log(user.error);
-				} else {
-					dispatch(setCurrentUser(user));
-				}
-			});
-	};
-};
+// export const CurrentUser = () => {
+// 	// console.log('credentials are: ', credentials);
+
+// 	return (dispatch) => {
+// 		fetch('http://localhost:3000/api/v1/get_current_user', {
+// 			credentials: 'include',
+// 			method: 'GET',
+// 			headers: {
+// 				'content-type': 'application/json'
+// 			}
+// 		})
+// 			.then((r) => r.json())
+// 			.then((user) => {
+// 				if (user.error) {
+// 					console.log(user.error);
+// 				} else {
+// 					dispatch(setCurrentUser(user));
+// 				}
+// 			});
+// 	};
+// };
