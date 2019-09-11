@@ -21,6 +21,7 @@ class App extends Component {
 	}
 }
 
+// mapStateToProps should check if logged-in not current-user
 const mapStateToProps = ({ currentUser }) => {
 	return {
 		currentUser
