@@ -6,7 +6,7 @@ export default (state = [], action) => {
 	switch (action.type) {
 		case 'SET_MY_DEEDS':
 			return {
-				...state,
+				// ...state,
 				myDeeds: action.deeds
 			};
 		// return action.deeds;

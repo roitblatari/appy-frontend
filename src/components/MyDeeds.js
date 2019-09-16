@@ -1,7 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const MyDeeds = () => {
-	return <div>a list of myDeeds</div>;
+import DeedCard from './DeedCard';
+
+const MyDeeds = (props) => {
+	// debugger;
+	if (props.deeds) {
+		const deedCards = props.deeds.map((d) => <DeedCard deed={d} key={d.attributes.id} />);
+		return deedCards;
+	} else {
+		return 'no cards';
+	}
+	// return deedCards.length > 0 ? deedCards : null;
 };
 
-export default MyDeeds;
+const mapStateToPprops = (state) => {
+	// console.log(state);
+	// debugger;
+	// todo  1) state.myDeeds.myDeeds way? How is it being passed?
+	return {
+		deeds: state.myDeeds.myDeeds
+	};
+};
+export default connect(mapStateToPprops)(MyDeeds);
