@@ -9,7 +9,7 @@ const DeedCard = (props) => {
 		<div>
 			<p>===========================================================================</p>
 			<p>
-				this is all the deeds but I probably want just my deeds from <strong>DeedCard</strong>{' '}
+				<strong>DeedCard</strong>{' '}
 			</p>
 			<h3>{title}</h3>
 			<p>{content}</p>
