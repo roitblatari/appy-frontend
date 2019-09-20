@@ -39,6 +39,32 @@ export const login = (credentials) => {
 			});
 	};
 };
+
+export const signup = (credentials) => {
+	console.log('credentials are: ', credentials);
+
+	return (dispatch) => {
+		fetch('http://localhost:3000/api/v1/users', {
+			credentials: 'include',
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(credentials)
+		})
+			.then((r) => r.json())
+			.then((user) => {
+				if (user.error) {
+					console.log(user.error);
+				} else {
+					dispatch(setCurrentUser(user));
+					// dispatch(getMyDeeds());
+					// dispatch(resetSignupForm());
+				}
+			});
+	};
+};
+
 export const logout = () => {
 	// console.log('credentials are: ', credentials);
 

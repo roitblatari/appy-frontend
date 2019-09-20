@@ -3,13 +3,18 @@ import { connect } from 'react-redux';
 
 import Login from './Login';
 import Logout from './Logout';
+import Signup from './Signup';
 
 const NavBar = ({ currentUser }) => {
+	// debugger;
 	return (
 		<div className="nav">
-			{currentUser ? <strong> Welcome {currentUser.data.attributes.username} </strong> : ''}
+			{/* {currentUser ? <strong> Welcome {currentUser.data.attributes.username} </strong> : ''} */}
 			<br /> <br />
-			{currentUser ? <Logout /> : <Login />}
+			{/* {currentUser ? <Logout /> : <Login />} */}
+			<Login />
+			<Logout />
+			<Signup />
 		</div>
 	);
 };
