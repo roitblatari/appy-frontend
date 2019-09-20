@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+// import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { getCurrentUser } from './actions/currentUser';
 import './App.css';
 
 import NavBar from './components/NavBar';
 import MainContainer from './components/MainContainer';
+import { getCurrentUser } from './actions/currentUser';
 // import currentUser from './actions/currentUser';
 
 class App extends Component {
@@ -15,6 +15,7 @@ class App extends Component {
 	}
 	render() {
 		return (
+			// <Router>	{/* //</Router> */}
 			<div className="App">
 				<NavBar />
 				<MainContainer />
@@ -24,9 +25,9 @@ class App extends Component {
 }
 
 // mapStateToProps should check if logged-in not current-user
-const mapStateToProps = ({ currentUser }) => {
+const mapStateToProps = ({ getCurrentUser }) => {
 	return {
-		currentUser
+		getCurrentUser
 	};
 };
 
