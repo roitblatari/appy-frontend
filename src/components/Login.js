@@ -20,7 +20,8 @@ const Login = ({ loginFormData, updateLoginForm, login }) => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form className="ui form" onSubmit={handleSubmit}>
+			<label>Username</label>
 			<input
 				type="text"
 				placeholder="username"
@@ -28,7 +29,8 @@ const Login = ({ loginFormData, updateLoginForm, login }) => {
 				name="username"
 				onChange={handleOnChange}
 			/>
-			{/* <input type="text" placeholder="email" value={loginFormData.email} name="email" onChange={handleOnChange} /> */}
+			{/* <label>Email</label><input type="text" placeholder="email" value={loginFormData.email} name="email" onChange={handleOnChange} /> */}
+			<label>Password</label>
 			<input
 				type="password"
 				placeholder="password"
@@ -36,7 +38,7 @@ const Login = ({ loginFormData, updateLoginForm, login }) => {
 				name="password"
 				onChange={handleOnChange}
 			/>
-			<input type="submit" value="Log In" />
+			<input className="ui blue button" type="submit" value="Log In" />
 		</form>
 	);
 };
@@ -48,3 +50,5 @@ const mapStateToPprops = (state) => {
 };
 
 export default connect(mapStateToPprops, { updateLoginForm, login })(Login);
+
+//

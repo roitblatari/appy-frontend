@@ -6,13 +6,14 @@ const DeedCard = (props) => {
 	const content = props.deed.attributes.content;
 
 	return (
-		<div>
-			<p>===========================================================================</p>
-			<p>
-				<strong>DeedCard</strong>{' '}
-			</p>
-			<h3>{title}</h3>
-			<p>{content}</p>
+		<div class="ui  cards">
+			<div class="card  placeholder segment">
+				<p>
+					<strong>DeedCard</strong>{' '}
+				</p>
+				<div class="header">{title}</div>
+				<p>{content}</p>
+			</div>
 		</div>
 	);
 };
