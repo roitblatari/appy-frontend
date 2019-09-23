@@ -50,7 +50,7 @@ export const signup = (credentials) => {
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify(credentials)
+			body: JSON.stringify({ user: credentials })
 		})
 			.then((r) => r.json())
 			.then((user) => {
