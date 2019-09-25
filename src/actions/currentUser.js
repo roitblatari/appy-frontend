@@ -58,7 +58,7 @@ export const signup = (credentials) => {
 					console.log(user.error);
 				} else {
 					dispatch(setCurrentUser(user));
-					// dispatch(getMyDeeds());
+					dispatch(getMyDeeds());
 					// dispatch(resetSignupForm());
 				}
 			});
