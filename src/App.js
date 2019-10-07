@@ -7,6 +7,9 @@ import './App.css';
 import NavBar from './components/NavBar';
 import MainContainer from './components/MainContainer';
 import { getCurrentUser } from './actions/currentUser';
+import Login from './components/LoginForm';
+import Signup from './components/Signup';
+// import Logout from './components/Logout';
 // import currentUser from './actions/currentUser';
 
 class App extends Component {
@@ -18,6 +21,10 @@ class App extends Component {
 			<Router>
 				<div className="App">
 					<NavBar />
+
+					<Route exact path="/login" component={Login} />
+					<Route exact path="/signup" component={Signup} />
+					{/* <Route exact path="/logout" component={Logout} /> */}
 					<MainContainer />
 				</div>
 			</Router>
