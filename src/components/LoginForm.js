@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+// import { Form } from 'react-bootstrap';
+
 import { updateLoginForm } from '../actions/loginForm';
 import { login } from '../actions/currentUser';
 
-const Login = ({ loginFormData, updateLoginForm, login }) => {
+const LoginForm = ({ loginFormData, updateLoginForm, login }) => {
 	const handleOnChange = (event) => {
 		// Handle Updating Component State
 		const { name, value } = event.target;
@@ -22,6 +24,7 @@ const Login = ({ loginFormData, updateLoginForm, login }) => {
 	return (
 		<form className="ui form" onSubmit={handleSubmit}>
 			<label>Username</label>
+
 			<input
 				type="text"
 				placeholder="username"
@@ -29,8 +32,9 @@ const Login = ({ loginFormData, updateLoginForm, login }) => {
 				name="username"
 				onChange={handleOnChange}
 			/>
-			{/* <label>Email</label><input type="text" placeholder="email" value={loginFormData.email} name="email" onChange={handleOnChange} /> */}
+			{/* <label>Email</label><br/><input type="text" placeholder="email" value={loginFormData.email} name="email" onChange={handleOnChange} /> */}
 			<label>Password</label>
+
 			<input
 				type="password"
 				placeholder="password"
@@ -49,6 +53,6 @@ const mapStateToPprops = (state) => {
 	};
 };
 
-export default connect(mapStateToPprops, { updateLoginForm, login })(Login);
+export default connect(mapStateToPprops, { updateLoginForm, login })(LoginForm);
 
 //
