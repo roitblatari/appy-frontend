@@ -5,6 +5,13 @@ export const setMyDeeds = (deeds) => {
 	};
 };
 
+export const deleteThisDeed = (deedId) => {
+	return {
+		type: 'DELETE_DEED',
+		deedId
+	};
+};
+
 // async
 
 export const getMyDeeds = () => {
@@ -29,3 +36,26 @@ export const getMyDeeds = () => {
 			});
 	};
 };
+
+export const deleteDeed = (deedId) => {
+	// console.log('credentials are: ', credentials);
+	return (dispatch) => {
+		fetch(`http://localhost:3000/api/v1/deeds/${deedId}`, {
+			credentials: 'include',
+			method: 'DELETE'
+		})
+			.then((response) => response.json())
+			.then((response) => dispatch(deleteThisDeed(response)));
+	};
+};
+/////////////////////////
+// export const logout = () => {
+// 	// console.log('credentials are: ', credentials);
+
+// 	return (dispatch) => {
+// 		fetch('http://localhost:3000/api/v1/logout', {
+// 			credentials: 'include',
+// 			method: 'DELETE'
+// 		}).then(dispatch(clearCurrentUser()));
+// 	};
+// };
