@@ -15,7 +15,7 @@ export const clearCurrentUser = () => {
 };
 
 // async
-export const login = (credentials) => {
+export const login = (credentials, history) => {
 	console.log('credentials are: ', credentials);
 
 	return (dispatch) => {
@@ -35,12 +35,13 @@ export const login = (credentials) => {
 					dispatch(setCurrentUser(user));
 					dispatch(getMyDeeds());
 					dispatch(resetLoginForm());
+					history.push('/');
 				}
 			});
 	};
 };
 
-export const signup = (credentials) => {
+export const signup = (credentials, history) => {
 	console.log('credentials are: ', credentials);
 
 	return (dispatch) => {
@@ -59,6 +60,7 @@ export const signup = (credentials) => {
 				} else {
 					dispatch(setCurrentUser(user));
 					dispatch(getMyDeeds());
+					history.push('/');
 					// dispatch(resetSignupForm());
 				}
 			});
