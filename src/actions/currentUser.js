@@ -43,7 +43,7 @@ export const login = (credentials, history) => {
 
 export const signup = (credentials, history) => {
 	console.log('credentials are: ', credentials);
-
+	debugger;
 	return (dispatch) => {
 		fetch('http://localhost:3000/api/v1/users', {
 			credentials: 'include',
@@ -58,6 +58,7 @@ export const signup = (credentials, history) => {
 				if (user.error) {
 					console.log(user.error);
 				} else {
+					debugger;
 					dispatch(setCurrentUser(user));
 					dispatch(getMyDeeds());
 					history.push('/');
