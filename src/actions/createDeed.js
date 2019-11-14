@@ -16,7 +16,7 @@ export const setDeed = (deed) => {
 
 export const createDeed = (credentials) => {
 	console.log('credentials are: ', credentials);
-
+	// debugger;
 	return (dispatch) => {
 		fetch('http://localhost:3000/api/v1/deeds', {
 			credentials: 'include',
@@ -31,9 +31,11 @@ export const createDeed = (credentials) => {
 				if (deed.error) {
 					console.log(deed.error);
 				} else {
+					// debugger;
 					console.log(deed);
 					// dispatch(setDeed(deed.data));
 					dispatch(getMyDeeds());
+					window.history.back();
 					// dispatch(resetDeedForm());
 				}
 			});
