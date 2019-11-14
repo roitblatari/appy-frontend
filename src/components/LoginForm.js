@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { updateLoginForm } from '../actions/loginForm';
 import { login } from '../actions/currentUser';
 
-const LoginForm = ({ loginFormData, updateLoginForm, login }) => {
+const LoginForm = ({ loginFormData, updateLoginForm, login, history }) => {
 	const handleOnChange = (event) => {
 		// Handle Updating Component State
 		const { name, value } = event.target;
@@ -18,7 +18,9 @@ const LoginForm = ({ loginFormData, updateLoginForm, login }) => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		login(loginFormData);
+		login(loginFormData, history);
+
+		// debugger;
 	};
 
 	return (
@@ -28,6 +30,7 @@ const LoginForm = ({ loginFormData, updateLoginForm, login }) => {
 			<input
 				type="text"
 				placeholder="username"
+				autoComplete="username"
 				value={loginFormData.username}
 				name="username"
 				onChange={handleOnChange}
@@ -40,6 +43,7 @@ const LoginForm = ({ loginFormData, updateLoginForm, login }) => {
 				placeholder="password"
 				value={loginFormData.password}
 				name="password"
+				autoComplete="current-password"
 				onChange={handleOnChange}
 			/>
 			<input className="ui blue button" type="submit" value="Log In" />

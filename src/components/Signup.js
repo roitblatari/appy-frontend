@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateSignupForm } from '../actions/signup';
+// import { updateSignupForm } from '../actions/signup';
 import { signup } from '../actions/currentUser';
 
 class Signup extends Component {
@@ -25,7 +25,7 @@ class Signup extends Component {
 		console.log(event);
 
 		// redux action and reducer and history
-		this.props.signup(this.state);
+		this.props.signup(this.state, history);
 		this.setState({
 			username: '',
 			email: '',
