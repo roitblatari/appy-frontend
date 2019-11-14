@@ -2,14 +2,14 @@ import React from 'react';
 // import { connect } from 'react-redux';
 
 import MyDeeds from './MyDeeds';
-import DeedForm from './DeedForm';
+// import DeedForm from './DeedForm';
 
 const DeedsContainer = () => {
 	return (
 		<div>
 			<MyDeeds />
 
-			<DeedForm />
+			{/* <DeedForm /> */}
 		</div>
 	);
 };

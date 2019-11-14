@@ -9,6 +9,7 @@ import MainContainer from './components/MainContainer';
 import { getCurrentUser } from './actions/currentUser';
 import Login from './components/LoginForm';
 import Signup from './components/Signup';
+import DeedForm from './components/DeedForm';
 // import Logout from './components/Logout';
 // import currentUser from './actions/currentUser';
 
@@ -23,6 +24,7 @@ class App extends Component {
 				<Switch>
 					<Route exact path="/login" component={Login} />
 					<Route exact path="/signup" component={Signup} />
+					<Route exact path="/deedForm" component={DeedForm} />
 				</Switch>
 				{/* <Route exact path="/logout" component={Logout} /> */}
 				<MainContainer />
