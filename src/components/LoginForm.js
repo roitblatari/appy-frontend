@@ -1,6 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { Form } from 'react-bootstrap';
+
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import { updateLoginForm } from '../actions/loginForm';
 import { login } from '../actions/currentUser';
@@ -24,30 +30,54 @@ const LoginForm = ({ loginFormData, updateLoginForm, login, history }) => {
 	};
 
 	return (
-		<form className="ui form" onSubmit={handleSubmit}>
-			<label>Username</label>
+		<Jumbotron fluid>
+			<Container>
+				<Form style={{ width: '30rem' }} onSubmit={handleSubmit}>
+					{/* <Form.Group controlId="exampleForm.ControlInput1"> */}
+					{/* <Form.Label>Email address</Form.Label>
+				<Form.Control type="email" placeholder="name@example.com" /> */}
 
-			<input
-				type="text"
-				placeholder="username"
-				autoComplete="username"
-				value={loginFormData.username}
-				name="username"
-				onChange={handleOnChange}
-			/>
-			{/* <label>Email</label><br/><input type="text" placeholder="email" value={loginFormData.email} name="email" onChange={handleOnChange} /> */}
-			<label>Password</label>
+					{/* <form className="ui form" onSubmit={handleSubmit}> */}
+					<Form.Group as={Row}>
+						<Form.Label column sm="2">
+							Username
+						</Form.Label>
+						<Col sm="10">
+							<Form.Control
+								type="text"
+								placeholder="username"
+								autoComplete="username"
+								value={loginFormData.username}
+								name="username"
+								onChange={handleOnChange}
+							/>
+						</Col>
+					</Form.Group>
+					{/* <label>Email</label><br/><input type="text" placeholder="email" value={loginFormData.email} name="email" onChange={handleOnChange} /> */}
+					<Form.Group as={Row}>
+						<Form.Label column sm="2">
+							Password
+						</Form.Label>
+						<Col sm="10">
+							<Form.Control
+								type="password"
+								placeholder="password"
+								value={loginFormData.password}
+								name="password"
+								autoComplete="current-password"
+								onChange={handleOnChange}
+							/>
+						</Col>
+					</Form.Group>
 
-			<input
-				type="password"
-				placeholder="password"
-				value={loginFormData.password}
-				name="password"
-				autoComplete="current-password"
-				onChange={handleOnChange}
-			/>
-			<input className="ui blue button" type="submit" value="Log In" />
-		</form>
+					<Form.Group>
+						<Button type="submit" className="ui blue button" value="Log In">
+							Log In
+						</Button>
+					</Form.Group>
+				</Form>
+			</Container>
+		</Jumbotron>
 	);
 };
 
