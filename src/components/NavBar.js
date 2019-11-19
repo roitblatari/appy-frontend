@@ -13,7 +13,7 @@ import Logout from './Logout';
 // import Signup from './Signup';
 // import { logout } from '../actions/currentUser';
 
-const NavBar = ({ currentUser }) => {
+const NavBar = ({ currentUser, history }) => {
 	return (
 		// <div className="nav">
 		// 	<br /> <br />
@@ -37,8 +37,8 @@ const NavBar = ({ currentUser }) => {
 				)}
 			</Navbar.Brand>
 			{!currentUser ? (
-				<div className={'currentUserIsTrue'}>
-					<Nav className="mr-auto">
+				<div className={'currentUserIsTrue  float-xl-right'}>
+					<Nav className="float-xl-right">
 						<Nav.Link>
 							<Link to="/login">Log In</Link>
 						</Nav.Link>
@@ -53,7 +53,7 @@ const NavBar = ({ currentUser }) => {
 						<Link to="/deedForm">DeedForm</Link>
 					</Nav.Link> */}
 					<Nav.Link>
-						<Logout />
+						<Logout history={history} />
 					</Nav.Link>
 				</Nav>
 			)}
