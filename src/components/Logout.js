@@ -4,10 +4,10 @@ import { Button } from 'react-bootstrap';
 
 import { logout } from '../actions/currentUser';
 
-const Logout = ({ logout }) => {
+const Logout = ({ logout, history }) => {
 	const handleClick = (event) => {
 		event.preventDefault();
-		logout();
+		logout(history);
 	};
 
 	return (
