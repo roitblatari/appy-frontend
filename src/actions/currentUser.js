@@ -68,14 +68,17 @@ export const signup = (credentials, history) => {
 	};
 };
 
-export const logout = () => {
+export const logout = (history) => {
 	// console.log('credentials are: ', credentials);
 
 	return (dispatch) => {
 		fetch('http://localhost:3000/api/v1/logout', {
 			credentials: 'include',
 			method: 'DELETE'
-		}).then(dispatch(clearCurrentUser()));
+		}).then(() => {
+			dispatch(clearCurrentUser());
+			history.push('/');
+		});
 	};
 };
 
@@ -96,6 +99,7 @@ export const getCurrentUser = () => {
 				} else {
 					dispatch(setCurrentUser(user));
 					dispatch(getMyDeeds());
+					history.push('/');
 				}
 			});
 	};
