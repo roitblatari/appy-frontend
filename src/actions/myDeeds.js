@@ -29,7 +29,7 @@ export const getMyDeeds = () => {
 				if (response.error) {
 					console.log(response.error);
 				} else {
-					console.log(response.data);
+					// console.log(response.data);
 
 					dispatch(setMyDeeds(response.data));
 				}

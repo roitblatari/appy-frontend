@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 import { deleteDeed } from '../actions/myDeeds';
 
 const DeedCard = (props) => {
-	console.log(props.deed.attributes.title);
+	// console.log(props.deed.attributes.title);
 	const title = props.deed.attributes.title;
 	const content = props.deed.attributes.content;
 
