@@ -11,25 +11,32 @@ import { Jumbotron } from 'react-bootstrap';
 import { createDeed } from '../actions/createDeed';
 
 class DeedForm extends Component {
-	debugger;
-
-	state = {
-		title: '',
-		giver_id: '',
-		receiver_id: '',
-		content: '',
-		image_url: ''
-	};
+	constructor() {
+		super();
+		this.state = {
+			title: '',
+			giver_id: '',
+			receiver_id: '',
+			receiver_emails: [],
+			content: '',
+			image_url: ''
+		};
+	}
+	// state = {
+	// 	title: '',
+	// 	giver_id: '',
+	// 	receiver_id: '',
+	// 	receiver_emails: [],
+	// 	content: '',
+	// 	image_url: ''
+	// };
 
 	handleOnChange = (event) => {
-		// Handle Updating Component State
-		// debugger;
 		const { name, value } = event.target;
 		this.setState({
 			[name]: value
 		});
-		// updateSignupForm(this.state);
-		//
+		// updateSignupForm(this.state);	//
 	};
 	handleSubmit = (event) => {
 		event.preventDefault();
@@ -45,7 +52,32 @@ class DeedForm extends Component {
 			image_url: ''
 		});
 	};
+	componentDidMount() {
+		// debugger;
+
+		fetch('http://localhost:3000/api/v1/users/', {
+			credentials: 'include',
+			method: 'GET',
+			headers: {
+				'content-type': 'application/json'
+			}
+		})
+			.then((r) => r.json())
+			.then((users) => {
+				let emails = [];
+				// debugger;
+				emails = users.data.map((user) => user.attributes.email);
+				console.log(emails);
+				debugger;
+				this.setState({
+					...this.state,
+					receiver_emails: emails
+				});
+			});
+	}
+
 	render() {
+		debugger;
 		return (
 			<Jumbotron fluid>
 				<Container>
@@ -79,10 +111,41 @@ class DeedForm extends Component {
 									name="giver_id"
 									onChange={this.handleOnChange}
 								/>
+								<text className="justify-content-md-center">
+									this should be a select option that You can select to user by name :-)
+								</text>
 							</Col>
+
 							{/* <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text> */}
 						</Form.Group>
+
 						<Form.Group as={Row}>
+							<Form.Label column sm="2">
+								Givers id
+							</Form.Label>
+							<Col sm="10">
+								{/* <Form.Control
+									type="select"
+									placeholder="giver_id"
+									value={this.state.giver_id}
+									name="giver_id"
+									onChange={this.handleOnChange}
+								/> */}
+								{this.state.receiver_emails}
+								<select value={this.state.value} onChange={this.handleChange}>
+									<option value="grapefruit">Grapefruit</option>
+									<option value="lime">Lime</option>
+									<option value="coconut">Coconut</option>
+									<option value="mango">Mango</option>
+								</select>
+								<text className="justify-content-md-center">
+									this should be a select option that You can select to user by name :-)
+								</text>
+							</Col>
+
+							{/* <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text> */}
+						</Form.Group>
+						{/* <Form.Group as={Row}>
 							<Form.Label column sm="2">
 								Receivers id
 							</Form.Label>
@@ -95,8 +158,8 @@ class DeedForm extends Component {
 									onChange={this.handleOnChange}
 								/>
 							</Col>
-							{/* <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text> */}
-						</Form.Group>
+							{/* <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text> 
+						</Form.Group> */}
 
 						<Form.Group as={Row}>
 							<Form.Label column sm="2">
