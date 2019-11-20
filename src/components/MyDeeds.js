@@ -15,11 +15,6 @@ const MyDeeds = (props) => {
 };
 
 const mapStateToPprops = (state) => {
-	// console.log(state);
-	// debugger;
-	// todo  1) state.myDeeds.myDeeds way? How is it being passed?
-	console.log('myDeeds', state.myDeeds);
-
 	return {
 		deeds: state.myDeeds
 	};
