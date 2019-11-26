@@ -3,6 +3,13 @@ import { connect } from 'react-redux';
 // import { updateSignupForm } from '../actions/signup';
 import { signup } from '../actions/currentUser';
 
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 class Signup extends Component {
 	state = {
 		username: '',
@@ -35,40 +42,76 @@ class Signup extends Component {
 	};
 
 	render() {
+		console.log(this.props);
+
 		return (
-			<div>
-				<form onSubmit={() => this.handleSubmit(event)}>
-					<input
-						type="text"
-						placeholder="username"
-						value={this.state.username}
-						name="username"
-						onChange={this.handleOnChange}
-					/>
-					<input
-						type="text"
-						placeholder="email"
-						value={this.state.email}
-						name="email"
-						onChange={this.handleOnChange}
-					/>
-					<input
-						type="text"
-						placeholder="image_url"
-						value={this.state.image_url}
-						name="image_url"
-						onChange={this.handleOnChange}
-					/>
-					<input
-						type="password"
-						placeholder="password"
-						value={this.state.password}
-						name="password"
-						onChange={this.handleOnChange}
-					/>
-					<input type="submit" value="Sign Up" />
-				</form>
-			</div>
+			<Jumbotron fluid>
+				<Container>
+					<Form onSubmit={() => this.handleSubmit(event)}>
+						<Form.Group as={Row}>
+							<Form.Label column sm="3">
+								username
+							</Form.Label>
+							<Col sm="9">
+								<Form.Control
+									type="text"
+									placeholder="username"
+									value={this.state.username}
+									name="username"
+									onChange={this.handleOnChange}
+								/>
+							</Col>
+						</Form.Group>
+						<Form.Group as={Row}>
+							<Form.Label column sm="3">
+								Email
+							</Form.Label>
+
+							<Col sm="9">
+								<Form.Control
+									type="text"
+									placeholder="email"
+									value={this.state.email}
+									name="email"
+									onChange={this.handleOnChange}
+								/>
+							</Col>
+						</Form.Group>
+						<Form.Group as={Row}>
+							<Form.Label column sm="3">
+								image_url
+							</Form.Label>
+							<Col sm="9">
+								<Form.Control
+									type="text"
+									placeholder="image_url"
+									value={this.state.image_url}
+									name="image_url"
+									onChange={this.handleOnChange}
+								/>
+							</Col>
+						</Form.Group>
+						<Form.Group as={Row}>
+							<Form.Label column sm="3">
+								password
+							</Form.Label>
+
+							<Col sm="9">
+								<Form.Control
+									type="password"
+									placeholder="password"
+									value={this.state.password}
+									name="password"
+									onChange={this.handleOnChange}
+								/>
+							</Col>
+						</Form.Group>
+						<Button type="submit" value="Submit" variant="primary">
+							Submit
+						</Button>
+					</Form>
+				</Container>
+			</Jumbotron>
 		);
 	}
 }
