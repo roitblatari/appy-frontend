@@ -15,9 +15,6 @@ const Logout = ({ logout, history }) => {
 			<Button onClick={handleClick} type="submit" value="Log Out">
 				Log Out
 			</Button>
-			{/* <form onSubmit={handleSubmit}>
-				<input type="submit" value="Log Out" />
-			</form> */}
 		</div>
 	);
 };

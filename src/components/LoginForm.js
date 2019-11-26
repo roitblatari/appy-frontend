@@ -25,19 +25,12 @@ const LoginForm = ({ loginFormData, updateLoginForm, login, history }) => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		login(loginFormData, history);
-
-		// debugger;
 	};
 
 	return (
 		<Jumbotron fluid>
 			<Container>
 				<Form style={{ width: '30rem' }} onSubmit={handleSubmit}>
-					{/* <Form.Group controlId="exampleForm.ControlInput1"> */}
-					{/* <Form.Label>Email address</Form.Label>
-				<Form.Control type="email" placeholder="name@example.com" /> */}
-
-					{/* <form className="ui form" onSubmit={handleSubmit}> */}
 					<Form.Group as={Row}>
 						<Form.Label column sm="2">
 							Username

@@ -17,9 +17,7 @@ class DeedForm extends Component {
 		this.state = {
 			title: '',
 			giver_id: '',
-			receiver_id: '',
-			// receiver_emails: [],
-			receiver_users: [],
+			giver_users: [],
 			content: '',
 			image_url: ''
 		};
@@ -27,27 +25,27 @@ class DeedForm extends Component {
 
 	handleOnChange = (event) => {
 		const { name, value } = event.target;
-		if (name == "giver_id") {
-			this.setState({
-	     [name]: event.target.selectedOptions[0].id
-			})	
-		} else {
-			this.setState({
-				[name]: value
-			});
-		}
-		
+		// if (name == 'giver_id') {
+		// 	this.setState({
+		// 		[name]: event.target.selectedOptions[0].id
+		// 	});
+		// } else {
+		this.setState({
+			[name]: value
+		});
+		// }
 	};
 	handleSubmit = (event) => {
 		event.preventDefault();
 		console.log(event);
 		console.log('in handle submit', this.props);
-		// redux action and reducer and history
+
 		this.props.createDeed(this.state);
 		this.setState({
 			title: '',
 			giver_id: '',
 			receiver_id: '',
+			// giver_users: [],
 			content: '',
 			image_url: ''
 		});
@@ -62,53 +60,38 @@ class DeedForm extends Component {
 		})
 			.then((r) => r.json())
 			.then((users) => {
-				// let emails = [];
-				let receiverUsers = users;
-				// debugger;
-				// emails = users.data.map((user) => user.attributes.email);
-				receiverUsers = users.data.map((user) => user.attributes);
-				console.log(receiverUsers);
+				let giverUsers = users;
+
+				giverUsers = users.data.map((user) => user.attributes);
+				console.log(giverUsers);
 				// debugger;
 				this.setState({
-					...this.state,
-					receiver_users: receiverUsers,
-					giver_id: receiverUsers
-					// receiver_emails: emails
+					// ...this.state,
+					giver_users: giverUsers,
+					giver_id: giverUsers[0].id
 				});
 			});
 	}
 
-	 selectUssers = () =>  {
-		return	 this.state.receiver_users.map( user => {
-			return	<option id={user.id} >{user.email}</option>
-		 }
-
-		 )
-
-		 
-	 } 
+	selectUssers = () => {
+		return this.state.giver_users.map((user) => {
+			return <option value={user.id}>{user.email}</option>;
+		});
+	};
 
 	render() {
-		console.log(this.state.receiver_users);
-		const receiverUsers = this.state.receiver_users;
-		// console.log(this.state.receiverUsers);
+		console.log(this.state);
+		const giverUsers = this.state.giver_users;
 
-		// const options = [
-		// 	{ val: 'chocolate', desc: 'Chocol' },
-		// 	{ val: 'strawberry', desc: 'Strawberry' },
-		// 	{ val: 'vanilla', desc: 'Vanilla' }
-		// ];
-		// // debugger;
 		return (
 			<Jumbotron fluid>
 				<Container>
-					<Form onSubmit={() => this.handleSubmit(event)} style={{ width: '30rem' }}>
+					<Form onSubmit={() => this.handleSubmit(event)}>
 						<Form.Group as={Row}>
-							{/* <Row className="justify-content-md-center"> */}
-							<Form.Label column sm="2">
+							<Form.Label column sm="3">
 								Title
 							</Form.Label>
-							<Col sm="10">
+							<Col sm="9">
 								<Form.Control
 									type="text"
 									name="title"
@@ -117,63 +100,26 @@ class DeedForm extends Component {
 									placeholder="Enter title"
 								/>
 							</Col>
-							{/* </Row> */}
 						</Form.Group>
+
 						<Form.Group as={Row}>
-							<Form.Label column sm="2">
-								Givers id
+							<Form.Label column sm="3">
+								Givers Email
 							</Form.Label>
-							<Col sm="10">
-								<Form.Control
-									type="text"
-									placeholder="giver_id"
-									value={this.state.giver_id}
-									name="giver_id"
-									onChange={this.handleOnChange}
-								/>
-								<text className="justify-content-md-center">
-									this should be a select option that You can select to user by name
-								</text>
+							<Col sm="9">
+								<Form.Group>
+									<Form.Control name="giver_id" onChange={this.handleOnChange} as="select">
+										{this.selectUssers()}
+									</Form.Control>
+								</Form.Group>
 							</Col>
 						</Form.Group>
 
 						<Form.Group as={Row}>
-							<Form.Label column sm="2">
-								Givers id
-							</Form.Label>
-							<Col sm="10">
-								{/* <Form.Control
-									type="select"
-									placeholder="giver_id"
-									value={this.state.giver_id}
-									name="giver_id"
-									onChange={this.handleOnChange}
-								/> */}
-								{/* {this.state.receiver_emails}
-								{(receiverUsers = this.state.receiverUsers)} */}
-								
-
-								<Form.Group controlId="exampleForm.ControlSelect1">
-    <Form.Label>Example select</Form.Label>
-    <Form.Control name="receiver_id" onChange={this.handleOnChange} as="select">
-			{ this.selectUssers()}
-      
-    </Form.Control>
-  </Form.Group>
- 
-
-					
-								<text className="justify-content-md-center">
-									this should be a select option that You can select to user by name
-								</text>
-							</Col>
-						</Form.Group>
-
-						<Form.Group as={Row}>
-							<Form.Label column sm="2">
+							<Form.Label column sm="3">
 								Image URL
 							</Form.Label>
-							<Col sm="10">
+							<Col sm="9">
 								<Form.Control
 									type="text"
 									placeholder="image_url"
@@ -184,10 +130,10 @@ class DeedForm extends Component {
 							</Col>
 						</Form.Group>
 						<Form.Group as={Row}>
-							<Form.Label column sm="2">
+							<Form.Label column sm="3">
 								Content
 							</Form.Label>{' '}
-							<Col sm="10">
+							<Col sm="9">
 								<Form.Control
 									type="text"
 									as="textarea"
@@ -208,11 +154,5 @@ class DeedForm extends Component {
 		);
 	}
 }
-// const mdtp = () => {
-// 	console.log(createDeed);
 
-// 	return {
-// 		createDeed
-// 	};
-// };
 export default connect(null, { createDeed })(DeedForm);
