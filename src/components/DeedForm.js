@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Select from 'react-select';
+// import Select from 'react-select';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -81,7 +81,7 @@ class DeedForm extends Component {
 
 	render() {
 		console.log(this.state);
-		const giverUsers = this.state.giver_users;
+		// const giverUsers = this.state.giver_users;
 
 		return (
 			<Jumbotron fluid>

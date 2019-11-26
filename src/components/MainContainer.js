@@ -1,5 +1,6 @@
 import React from 'react';
 import DeedsContainer from './DeedsContainer';
+// import ReceiversContainer from './ReceiversContainer';
 
 import Jumbotron from 'react-bootstrap/Jumbotron';
 // import SidePanel from 'react-bootstrap/SidePanel';
@@ -10,24 +11,13 @@ import { connect } from 'react-redux';
 
 const MainContainer = ({ currentUser }) => {
 	return (
-		// <div className="mainContainer">
 		<div className="mainContainer">
-			{/* <Jumbotron>{currentUser.username}</Jumbotron> */}
-			{/* {currentUser ? <MyDeeds /> : null
-			// Did you know that I am the <strong>MainContainer</strong> component?
-			}DeedsContainer
-			{currentUser ? <DeedForm /> : null
-			// Did you know that I am the <strong>MainContainer</strong> component?
-			} */}
 			{currentUser ? (
 				<Jumbotron fluid>
-					{/* <SidePanel> */}
-					{/* <ListGroup className="flex-column" md={{ span: 4, offset: 4 }}> */}
-
-					{/* </SidePanel> */}
 					<Container>
 						<DeedsContainer />
 					</Container>
+					{/* <ReceiversContainer /> */}
 				</Jumbotron>
 			) : null}
 		</div>
