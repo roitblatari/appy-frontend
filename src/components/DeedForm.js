@@ -75,7 +75,11 @@ class DeedForm extends Component {
 
 	selectUssers = () => {
 		return this.state.giver_users.map((user) => {
-			return <option value={user.id}>{user.email}</option>;
+			return (
+				<option key={user.id} value={user.id}>
+					{user.email}
+				</option>
+			);
 		});
 	};
 
@@ -115,6 +119,8 @@ class DeedForm extends Component {
 							</Col>
 						</Form.Group>
 
+						{/*
+						 for now I don't feel that pictures are safe, considering this application is geared for kids
 						<Form.Group as={Row}>
 							<Form.Label column sm="3">
 								Image URL
@@ -127,8 +133,8 @@ class DeedForm extends Component {
 									name="image_url"
 									onChange={this.handleOnChange}
 								/>
-							</Col>
-						</Form.Group>
+							</Col> 
+						</Form.Group>*/}
 						<Form.Group as={Row}>
 							<Form.Label column sm="3">
 								Content
