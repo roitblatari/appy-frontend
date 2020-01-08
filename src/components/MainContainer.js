@@ -19,7 +19,10 @@ const MainContainer = ({ currentUser }) => {
 					</Container>
 					{/* <ReceiversContainer /> */}
 				</Jumbotron>
-			) : null}
+			) :
+			
+			<img height="650em" alt="appy" src="https://i.imgur.com/OMMY42T.png" title="source: imgur.com" />
+		}
 		</div>
 	);
 };
