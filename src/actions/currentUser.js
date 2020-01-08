@@ -16,7 +16,6 @@ export const clearCurrentUser = () => {
 
 // async
 export const login = (credentials, history) => {
-	// console.log('credentials are: ', credentials);
 	return (dispatch) => {
 		fetch('http://localhost:3000/api/v1/login', {
 			credentials: 'include',
@@ -40,9 +39,7 @@ export const login = (credentials, history) => {
 	};
 };
 
-export const signup = (credentials, history) => {
-	// console.log('credentials are: ', credentials);
-	debugger;
+export const signup = (credentials) => {
 	return (dispatch) => {
 		fetch('http://localhost:3000/api/v1/users', {
 			credentials: 'include',
@@ -57,19 +54,15 @@ export const signup = (credentials, history) => {
 				if (user.error) {
 					console.log(user.error);
 				} else {
-					// debugger;
 					dispatch(setCurrentUser(user));
 					// dispatch(getMyDeeds());
-					history.push('/');
-					// dispatch(resetSignupForm());
+					window.history.back();
 				}
 			});
 	};
 };
 
 export const logout = (history) => {
-	// console.log('credentials are: ', credentials);
-
 	return (dispatch) => {
 		fetch('http://localhost:3000/api/v1/logout', {
 			credentials: 'include',
