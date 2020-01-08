@@ -77,6 +77,8 @@ class Signup extends Component {
 								/>
 							</Col>
 						</Form.Group>
+						{/* 
+						For now I feel that pictures are unsafe, considering this application is geared for kids
 						<Form.Group as={Row}>
 							<Form.Label column sm="3">
 								image_url
@@ -90,7 +92,7 @@ class Signup extends Component {
 									onChange={this.handleOnChange}
 								/>
 							</Col>
-						</Form.Group>
+						</Form.Group> */}
 						<Form.Group as={Row}>
 							<Form.Label column sm="3">
 								password
