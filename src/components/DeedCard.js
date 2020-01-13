@@ -1,15 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-// import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
-// import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 import { deleteDeed } from '../actions/myDeeds';
 
 const DeedCard = (props) => {
-	// console.log(props.deed.attributes.title);
+
 	const title = props.deed.attributes.title;
 	const content = props.deed.attributes.content;
 
@@ -27,8 +25,7 @@ const DeedCard = (props) => {
 					<Button onClick={handleClick} variant="primary">
 						Delete
 					</Button>
-					{/* <Card.Link href="#">Card Link</Card.Link>
-					<Card.Link href="#">Another Link</Card.Link> */}
+
 				</Card.Body>
 			</Card>
 		</div>
